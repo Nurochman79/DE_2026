@@ -1,0 +1,1 @@
+Temporary copy: pasang schema_solution.sql dan warehouse_solution.py, delete DB, Restart Kernel, Run All. Jangan overwrite student files.

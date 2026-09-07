@@ -1,0 +1,1 @@
+Counts 14/10/22; rejected T023/T024/T025; revenue 8.745.000; top P006 19, P008 2, P007 1. Notebook dan CLI wajib sama.

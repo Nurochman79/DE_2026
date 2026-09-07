@@ -1,0 +1,27 @@
+{
+  "loaded_transactions": 22,
+  "rejected_transactions": 3,
+  "counts": {
+    "users": 14,
+    "products": 10,
+    "transactions": 22
+  },
+  "revenue": 8745000.0,
+  "top_products": [
+    [
+      "P006",
+      "Webcam",
+      19
+    ],
+    [
+      "P008",
+      "Notebook",
+      2
+    ],
+    [
+      "P007",
+      "Desk Lamp",
+      1
+    ]
+  ]
+}

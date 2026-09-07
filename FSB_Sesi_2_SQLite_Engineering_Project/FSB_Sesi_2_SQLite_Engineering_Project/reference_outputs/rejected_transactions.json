@@ -1,0 +1,20 @@
+[
+  {
+    "tx_id": "T023",
+    "user_id": "U999",
+    "product_id": "P006",
+    "reason": "FOREIGN KEY constraint failed"
+  },
+  {
+    "tx_id": "T024",
+    "user_id": "U009",
+    "product_id": "P999",
+    "reason": "FOREIGN KEY constraint failed"
+  },
+  {
+    "tx_id": "T025",
+    "user_id": "U888",
+    "product_id": "P888",
+    "reason": "FOREIGN KEY constraint failed"
+  }
+]

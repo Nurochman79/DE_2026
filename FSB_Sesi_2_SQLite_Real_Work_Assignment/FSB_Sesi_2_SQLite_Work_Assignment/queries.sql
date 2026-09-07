@@ -1,0 +1,4 @@
+-- SOURCE OF TRUTH query submission
+-- Query 1: tiga COUNT
+-- Query 2: JOIN + SUM(quantity*price)
+-- Query 3: GROUP BY + ORDER BY + LIMIT 3

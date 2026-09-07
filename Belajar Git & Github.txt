@@ -1,0 +1,1582 @@
+tolong berikan penjelasanan step by step belajar pada langkah nomor 13 , 21 dan seterusanya sampai nomor 51 seperti berikut Level 0 — Persiapan
+
+
+
+ Memahami Git vs GitHub 
+
+ Install Git 
+
+ Membuat akun GitHub 
+
+ Konfigurasi Git 
+
+ Memahami terminal/command prompt 
+
+
+
+Level 1 — Git Dasar
+
+6. git init
+
+7. git status
+
+8. git add
+
+9. git commit
+
+10. git log
+
+11. git diff
+
+12. .gitignore
+
+13. Membatalkan perubahan
+
+
+
+Level 2 — GitHub Dasar
+
+14. Membuat repository
+
+15. Menghubungkan local repository dengan GitHub
+
+16. git remote
+
+17. git push
+
+18. git pull
+
+19. git clone
+
+20. Membuat README
+
+21. Repository public vs private
+
+
+
+Level 3 — Branching
+
+22. Apa itu branch
+
+23. git branch
+
+24. git switch
+
+25. Membuat feature branch
+
+26. Merge
+
+27. Merge conflict
+
+28. Menyelesaikan conflict
+
+29. Branching strategy
+
+
+
+Level 4 — Collaboration
+
+30. Fork
+
+31. Pull Request
+
+32. Code review
+
+33. Issues
+
+34. Labels
+
+35. Milestones
+
+36. Project board
+
+37. Collaboration workflow
+
+
+
+Level 5 — Git Intermediate
+
+38. git reset
+
+39. git revert
+
+40. git restore
+
+41. git stash
+
+42. git rebase
+
+43. Interactive rebase
+
+44. git cherry-pick
+
+45. Tag dan release
+
+46. Memahami HEAD
+
+
+
+Level 6 — GitHub Advanced
+
+47. GitHub Actions
+
+48. CI/CD
+
+49. Secrets
+
+50. Environments
+
+51. Workflow YAML
+
+Tentu. Karena Anda sebelumnya mengatakan bahwa manual Git yang pertama masih terasa sulit dipahami, saya akan menjelaskan mulai Level 1 nomor 13 sampai Level 6 nomor 51 dengan gaya belajar pemula, yaitu setiap langkah akan menjawab:
+
+Apa artinya?
+Untuk apa?
+Kapan digunakan?
+Perintah yang diketik
+Contoh nyata
+Apa yang harus Anda lihat setelah menjalankan perintah
+Latihan sederhana
+
+Saya juga akan menggunakan contoh folder project yang sederhana agar Anda bisa langsung praktik di Windows PowerShell.
+
+LEVEL 1 — Git Dasar
+13. Membatalkan Perubahan
+
+Ini sangat penting karena saat belajar Git Anda akan sering melakukan kesalahan.
+
+Misalnya Anda mempunyai file:
+
+project/
+└── belajar.py
+
+Awalnya isi belajar.py:
+
+print("Hello")
+
+Kemudian Anda mengubahnya menjadi:
+
+print("Hello")
+print("Saya sedang belajar Git")
+
+Tetapi ternyata Anda ingin membatalkan perubahan tersebut.
+
+Langkah 1 — Lihat status
+git status
+
+Anda mungkin melihat:
+
+modified: belajar.py
+
+Artinya:
+
+File belajar.py sudah berubah sejak commit terakhir.
+
+Langkah 2 — Kembalikan file
+
+Gunakan:
+
+git restore belajar.py
+
+Sekarang Git mengembalikan belajar.py ke kondisi commit terakhir.
+
+Langkah 3 — Periksa
+git status
+
+Jika berhasil, perubahan tadi sudah tidak muncul.
+
+Ingat konsepnya
+File asli
+   ↓
+Anda mengubah file
+   ↓
+Git mendeteksi perubahan
+   ↓
+git restore
+   ↓
+Perubahan dibatalkan
+⚠️ Perhatian
+
+git restore dapat menghapus perubahan yang belum Anda commit.
+
+Jadi jangan langsung menggunakan perintah ini jika Anda belum yakin perubahan tersebut memang ingin dibuang.
+
+LEVEL 2 — GitHub Dasar
+14. Membuat Repository
+
+Sekarang kita mulai menghubungkan Git dengan GitHub.
+
+Apa itu repository?
+
+Repository atau repo adalah tempat penyimpanan project yang menggunakan Git.
+
+Contohnya:
+
+belajar-git
+
+Repository dapat berada di:
+
+Local
+
+D:\Tutorial\belajar-git
+
+atau di:
+
+GitHub
+
+GitHub → repository belajar-git
+
+Jadi ada dua tempat:
+
+Komputer Anda             GitHub
+     ↓                       ↓
+belajar-git   ←→       belajar-git
+Langkah 1
+
+Buka GitHub di browser.
+
+Buat repository baru.
+
+Misalnya:
+
+Repository name:
+belajar-git
+
+Untuk latihan awal, Anda bisa memilih:
+
+Public
+
+dan jangan dulu menambahkan README jika Anda ingin belajar membuat repository lokal kemudian menghubungkannya sendiri.
+
+Tujuan latihan
+
+Anda akan belajar:
+
+Local Git Repository
+        ↓
+      GitHub
+15. Menghubungkan Local Repository dengan GitHub
+
+Sekarang misalnya Anda sudah mempunyai:
+
+D:\Tutorial\belajar-git
+
+dan di dalamnya sudah ada Git:
+
+git init
+
+Anda ingin menghubungkannya dengan repository GitHub.
+
+Langkah 1 — Pastikan berada di folder project
+cd D:\Tutorial\belajar-git
+Langkah 2 — Hubungkan GitHub
+
+Bentuk perintahnya:
+
+git remote add origin URL_REPOSITORY
+
+Contoh:
+
+git remote add origin https://github.com/username/belajar-git.git
+
+origin adalah nama alias untuk repository GitHub tersebut.
+
+Jadi:
+
+origin
+   ↓
+Repository GitHub Anda
+16. git remote
+
+Perintah:
+
+git remote
+
+digunakan untuk melihat repository remote.
+
+Coba:
+
+git remote -v
+
+Hasilnya kira-kira:
+
+origin  https://github.com/username/belajar-git.git (fetch)
+origin  https://github.com/username/belajar-git.git (push)
+
+Artinya:
+
+origin
+   ↓
+GitHub repository
+Kenapa ada fetch dan push?
+
+fetch
+
+GitHub → komputer
+
+push
+
+komputer → GitHub
+17. git push
+
+Ini salah satu perintah Git yang paling penting.
+
+git push berarti:
+
+Mengirim commit dari komputer Anda ke GitHub.
+
+Misalnya Anda sudah melakukan:
+
+git add .
+
+kemudian:
+
+git commit -m "Membuat project pertama"
+
+Sekarang commit masih berada di komputer.
+
+Untuk mengirim ke GitHub:
+
+git push
+
+Pada push pertama biasanya:
+
+git push -u origin main
+
+Setelah itu biasanya Anda cukup menggunakan:
+
+git push
+Gambaran
+File
+ ↓
+git add
+ ↓
+git commit
+ ↓
+Local Git
+ ↓
+git push
+ ↓
+GitHub
+
+Penting: git commit dan git push bukan hal yang sama.
+
+18. git pull
+
+Kalau push berarti:
+
+Komputer → GitHub
+
+maka pull secara sederhana berarti:
+
+GitHub → Komputer
+
+Misalnya ada perubahan di GitHub.
+
+Anda ingin mengambil perubahan tersebut:
+
+git pull
+
+Contoh situasi:
+
+GitHub
+   │
+   │ perubahan
+   ↓
+git pull
+   │
+   ↓
+Komputer Anda
+
+Ini sangat penting ketika bekerja bersama orang lain.
+
+19. git clone
+
+git clone digunakan ketika Anda ingin mengambil repository GitHub menjadi project lokal.
+
+Misalnya ada:
+
+GitHub
+└── belajar-python
+
+Anda menjalankan:
+
+git clone https://github.com/username/belajar-python.git
+
+Git akan membuat:
+
+belajar-python/
+
+di komputer Anda.
+
+Perbedaan clone dan pull
+
+clone
+
+Digunakan pertama kali untuk mengambil repository.
+
+GitHub
+ ↓
+clone
+ ↓
+Komputer
+
+pull
+
+Digunakan untuk mengambil perubahan terbaru setelah repository sudah ada.
+
+GitHub
+ ↓
+pull
+ ↓
+Repository lokal
+20. Membuat README
+
+README adalah dokumen penjelasan project.
+
+Biasanya bernama:
+
+README.md
+
+Contohnya:
+
+# Belajar Git
+
+Project ini digunakan untuk belajar Git dan GitHub.
+
+## Tujuan
+
+- Memahami Git
+- Memahami GitHub
+- Belajar branching
+- Belajar collaboration
+
+GitHub akan menampilkan README di halaman utama repository.
+
+Struktur sederhana
+belajar-git/
+│
+├── README.md
+├── belajar.py
+└── data/
+
+README sebaiknya menjelaskan:
+
+Project ini apa?
+Tujuannya apa?
+Cara menjalankannya bagaimana?
+Struktur project seperti apa?
+Teknologi yang digunakan apa?
+21. Repository Public vs Private
+
+Repository GitHub mempunyai dua pilihan utama.
+
+Public
+
+Bisa dilihat orang lain.
+
+Anda
+ ↓
+GitHub
+ ↓
+Public
+ ↓
+Orang lain dapat melihat
+
+Cocok untuk:
+
+portfolio
+project belajar
+project open source
+demonstrasi kemampuan
+Private
+
+Hanya Anda dan orang yang Anda beri akses yang dapat melihatnya.
+
+Cocok untuk:
+
+project pribadi
+project perusahaan
+data internal
+kode yang belum ingin dipublikasikan
+Untuk belajar
+
+Saya menyarankan Anda mempunyai satu repository:
+
+belajar-git
+
+yang Public, supaya nanti bisa menjadi bagian dari portfolio Git/GitHub Anda.
+
+LEVEL 3 — BRANCHING
+
+Sekarang kita masuk konsep yang sangat penting.
+
+22. Apa itu Branch?
+
+Branch adalah jalur kerja terpisah dalam repository.
+
+Misalnya project utama:
+
+main
+
+Anda ingin menambahkan fitur baru.
+
+Daripada langsung mengubah main, Anda membuat:
+
+feature-login
+
+Sehingga:
+
+main
+  │
+  └── feature-login
+
+Anda bekerja di:
+
+feature-login
+
+Setelah selesai, hasilnya bisa digabungkan ke:
+
+main
+Analogi
+
+Bayangkan:
+
+main = jalan utama
+feature-login = jalan cabang
+
+Anda bekerja di jalan cabang tanpa mengganggu jalan utama.
+
+23. git branch
+
+Untuk melihat branch:
+
+git branch
+
+Contoh:
+
+* main
+
+Tanda:
+
+*
+
+menunjukkan branch yang sedang aktif.
+
+Membuat branch
+git branch feature-login
+
+Kemudian:
+
+git branch
+
+hasilnya:
+
+* main
+  feature-login
+
+Branch sudah dibuat tetapi Anda masih berada di main.
+
+24. git switch
+
+Untuk berpindah branch:
+
+git switch feature-login
+
+Kemudian:
+
+git branch
+
+menjadi:
+
+  main
+* feature-login
+
+Artinya sekarang Anda bekerja di:
+
+feature-login
+25. Membuat Feature Branch
+
+Ini adalah pola kerja yang sangat umum.
+
+Misalnya Anda ingin menambahkan fitur:
+
+login
+Langkah 1
+
+Pastikan berada di main:
+
+git switch main
+Langkah 2
+
+Buat branch:
+
+git switch -c feature-login
+
+Perintah ini sekaligus:
+
+membuat branch
++
+berpindah ke branch
+Langkah 3
+
+Edit project.
+
+Langkah 4
+
+Commit:
+
+git add .
+git commit -m "Menambahkan fitur login"
+
+Sekarang commit tersebut berada di:
+
+feature-login
+
+bukan langsung di main.
+
+26. Merge
+
+Setelah fitur selesai, Anda ingin menggabungkannya ke main.
+
+Pertama kembali:
+
+git switch main
+
+Kemudian:
+
+git merge feature-login
+
+Gambaran:
+
+main
+ │
+ ├───────────────┐
+ │               │
+ │          feature-login
+ │               │
+ └───────────────┘
+          ↓
+        merge
+          ↓
+         main
+27. Merge Conflict
+
+Kadang Git tidak bisa menentukan perubahan mana yang harus digunakan.
+
+Misalnya Anda dan orang lain mengubah baris yang sama.
+
+Git akan mengatakan terjadi:
+
+CONFLICT
+
+Contohnya:
+
+<<<<<<< HEAD
+print("Hello")
+=======
+print("Halo")
+>>>>>>> feature-login
+
+Artinya ada dua versi.
+
+28. Menyelesaikan Conflict
+
+Anda harus menentukan kode yang benar.
+
+Misalnya Anda memilih:
+
+print("Hello")
+
+Hapus tanda:
+
+<<<<<<<
+=======
+>>>>>>>
+
+sehingga file menjadi:
+
+print("Hello")
+
+Kemudian:
+
+git add .
+
+dan:
+
+git commit
+
+Conflict selesai.
+
+Pola sederhananya
+merge
+ ↓
+CONFLICT
+ ↓
+buka file
+ ↓
+pilih perubahan
+ ↓
+hapus tanda conflict
+ ↓
+git add
+ ↓
+git commit
+29. Branching Strategy
+
+Branching strategy adalah aturan bagaimana tim menggunakan branch.
+
+Untuk pemula, gunakan strategi sederhana:
+
+main
+ │
+ ├── feature-login
+ ├── feature-report
+ └── feature-dashboard
+
+Aturannya:
+
+Jangan mengerjakan fitur langsung di main.
+
+Gunakan:
+
+feature-...
+
+Misalnya:
+
+feature-login
+feature-dashboard
+feature-data-cleaning
+LEVEL 4 — COLLABORATION
+30. Fork
+
+Fork adalah membuat salinan repository orang lain ke akun GitHub Anda.
+
+Misalnya:
+
+Repository A
+      ↓
+     Fork
+      ↓
+Repository A di akun Anda
+
+Fork sering digunakan dalam open-source.
+
+Contoh:
+
+Project orang lain
+        ↓
+       Fork
+        ↓
+Project Anda
+        ↓
+Anda melakukan perubahan
+        ↓
+Pull Request
+        ↓
+Pemilik project
+31. Pull Request
+
+Pull Request atau PR adalah permintaan:
+
+"Saya mempunyai perubahan. Apakah Anda mau memasukkannya ke project utama?"
+
+Misalnya:
+
+feature-login
+      ↓
+Pull Request
+      ↓
+main
+
+PR bukan sekadar upload kode.
+
+PR memungkinkan:
+
+melihat perubahan
+berdiskusi
+review kode
+memberikan komentar
+melakukan perbaikan
+kemudian merge
+32. Code Review
+
+Code review berarti orang lain memeriksa kode Anda.
+
+Misalnya Anda membuat:
+
+def calculate_total():
+
+Reviewer bisa memberikan komentar:
+
+Fungsi ini sebaiknya diberi parameter.
+
+Anda memperbaikinya.
+
+Tujuannya:
+
+menemukan bug
+meningkatkan kualitas kode
+menjaga standar project
+berbagi pengetahuan
+33. Issues
+
+GitHub Issues digunakan untuk mencatat pekerjaan atau masalah.
+
+Contoh:
+
+Issue #1
+Judul:
+Bug pada perhitungan total
+
+Issue juga bisa digunakan untuk:
+
+Task:
+Membuat dashboard
+
+atau:
+
+Bug:
+Data transaksi tidak muncul
+34. Labels
+
+Labels digunakan untuk mengelompokkan issue.
+
+Contoh:
+
+bug
+feature
+documentation
+urgent
+enhancement
+
+Misalnya:
+
+Issue #10
+Bug pada login
+
+Labels:
+bug
+high priority
+
+Ini membantu project tetap terorganisir.
+
+35. Milestones
+
+Milestone adalah target pekerjaan dalam periode tertentu.
+
+Misalnya:
+
+Milestone:
+Version 1.0
+
+Berisi:
+
+Issue #1
+Issue #2
+Issue #3
+Issue #4
+
+Setelah semuanya selesai:
+
+Version 1.0 → selesai
+36. Project Board
+
+Project board digunakan untuk mengatur pekerjaan secara visual.
+
+Contoh:
+
+TO DO
+────────────────
+Membuat login
+Membuat dashboard
+
+IN PROGRESS
+────────────────
+Cleaning data
+
+DONE
+────────────────
+Setup database
+
+Ini mirip Kanban board.
+
+37. Collaboration Workflow
+
+Sekarang gabungkan semuanya.
+
+Workflow sederhana:
+
+1. Clone repository
+       ↓
+2. Buat branch
+       ↓
+3. Kerjakan fitur
+       ↓
+4. git add
+       ↓
+5. git commit
+       ↓
+6. git push
+       ↓
+7. Pull Request
+       ↓
+8. Code Review
+       ↓
+9. Merge
+       ↓
+10. main
+
+Ini adalah workflow yang sangat penting untuk Anda pahami.
+
+LEVEL 5 — GIT INTERMEDIATE
+
+Sekarang kita masuk perintah yang sedikit lebih berbahaya.
+
+Jangan buru-buru menggunakan perintah-perintah ini pada project penting.
+
+38. git reset
+
+git reset digunakan untuk memindahkan posisi commit/HEAD dan dapat mengubah staging atau riwayat lokal tergantung mode yang digunakan.
+
+Contoh:
+
+A → B → C
+
+Anda ingin kembali ke:
+
+A → B
+
+Salah satu bentuk:
+
+git reset --hard HEAD~1
+
+Ini akan menghapus commit terakhir dari branch lokal dan perubahan yang terkait dapat ikut hilang.
+
+⚠️ Untuk pemula
+
+Jangan gunakan:
+
+git reset --hard
+
+sembarangan.
+
+Pelajari dulu perbedaan:
+
+--soft
+--mixed
+--hard
+39. git revert
+
+git revert lebih aman untuk membatalkan commit yang sudah dibuat.
+
+Misalnya:
+
+A → B → C
+
+Commit C ternyata salah.
+
+Dengan revert:
+
+A → B → C → D
+             ↑
+       membatalkan C
+
+Jadi commit lama tidak dihapus.
+
+Git membuat commit baru yang membalikkan perubahan.
+
+Perintah:
+
+git revert HEAD
+Perbedaan sederhana
+reset
+→ mengubah/mundur dalam riwayat lokal
+
+revert
+→ membuat commit baru untuk membatalkan perubahan
+
+Untuk repository yang sudah dibagikan ke orang lain, revert biasanya lebih aman.
+
+40. git restore
+
+Kita sudah sedikit mengenalnya pada nomor 13.
+
+git restore terutama digunakan untuk mengembalikan perubahan pada file.
+
+Misalnya:
+
+belajar.py
+
+berubah.
+
+Anda ingin membuang perubahan:
+
+git restore belajar.py
+
+Untuk mengeluarkan file dari staging area, Anda juga bisa menggunakan bentuk:
+
+git restore --staged belajar.py
+
+Ini tidak menghapus isi perubahan, hanya membatalkan status staged.
+
+41. git stash
+
+Bayangkan Anda sedang mengerjakan:
+
+feature-login
+
+Belum selesai.
+
+Tiba-tiba Anda harus pindah ke:
+
+main
+
+Tetapi perubahan Anda belum siap di-commit.
+
+Anda bisa menyimpannya sementara:
+
+git stash
+
+Git menyimpan perubahan tersebut sementara.
+
+Kemudian Anda bisa berpindah branch:
+
+git switch main
+
+Setelah pekerjaan lain selesai, kembali:
+
+git switch feature-login
+
+Kemudian ambil kembali perubahan:
+
+git stash pop
+
+Gambaran:
+
+Perubahan belum selesai
+        ↓
+    git stash
+        ↓
+disimpan sementara
+        ↓
+kerjakan hal lain
+        ↓
+    git stash pop
+        ↓
+perubahan kembali
+42. git rebase
+
+Rebase digunakan untuk menata ulang posisi commit dengan menggunakan base/commit dasar yang berbeda.
+
+Misalnya:
+
+main:
+A → B → C
+
+feature:
+A → B → D → E
+
+Kemudian main maju:
+
+A → B → C → F
+
+Anda dapat melakukan rebase feature terhadap main sehingga secara konseptual menjadi:
+
+A → B → C → D' → E'
+
+Perhatikan:
+
+D → D'
+E → E'
+
+Commit dapat memperoleh ID baru karena riwayat ditulis ulang.
+
+⚠️ Penting
+
+Rebase adalah topik yang harus dipelajari setelah Anda sudah memahami:
+
+branch
+merge
+HEAD
+commit history
+
+Jangan menggunakan rebase pada branch bersama secara sembarangan.
+
+43. Interactive Rebase
+
+Interactive rebase memungkinkan Anda merapikan commit.
+
+Misalnya:
+
+A
+B "coba"
+C "fix"
+D "fix lagi"
+E "final"
+
+Anda bisa merapikannya menjadi commit yang lebih bermakna.
+
+Perintah misalnya:
+
+git rebase -i HEAD~4
+
+Anda dapat melakukan:
+
+pick
+reword
+squash
+fixup
+drop
+
+Contohnya:
+
+B "buat login"
+C "fix login"
+D "fix login lagi"
+
+dapat digabung menjadi:
+
+B "Implement login"
+
+Ini sangat berguna untuk merapikan history sebelum branch dibagikan.
+
+44. git cherry-pick
+
+Cherry-pick digunakan untuk mengambil satu commit tertentu dari branch lain.
+
+Misalnya:
+
+main
+A → B
+
+feature
+A → B → C → D
+
+Anda hanya ingin mengambil C.
+
+Gunakan:
+
+git cherry-pick ID_COMMIT_C
+
+Hasilnya kira-kira:
+
+main
+A → B → C'
+
+Jadi Anda tidak mengambil seluruh branch.
+
+45. Tag dan Release
+
+Tag digunakan untuk memberi tanda pada commit tertentu.
+
+Misalnya project sudah selesai:
+
+Version 1.0
+
+Anda dapat membuat:
+
+git tag v1.0.0
+
+Kemudian:
+
+git push origin v1.0.0
+
+Tag biasanya digunakan untuk:
+
+v1.0.0
+v1.1.0
+v2.0.0
+
+GitHub juga mempunyai konsep Release, yang dapat menggunakan tag sebagai penanda versi resmi project.
+
+46. Memahami HEAD
+
+Ini konsep yang sangat penting.
+
+Secara sederhana:
+
+HEAD menunjukkan posisi yang sedang Anda lihat/kerjakan dalam riwayat Git.
+
+Misalnya:
+
+A → B → C
+        ↑
+       HEAD
+
+Artinya HEAD berada pada commit C.
+
+Jika Anda pindah ke commit sebelumnya:
+
+A → B → C
+    ↑
+   HEAD
+
+HEAD sekarang menunjuk ke B.
+
+Kalau Anda berada di branch:
+
+main
+  ↓
+  C
+  ↑
+HEAD
+
+Anda dapat membayangkan:
+
+HEAD
+ ↓
+branch
+ ↓
+commit
+
+Memahami HEAD akan membuat:
+
+reset
+revert
+restore
+rebase
+checkout/switch
+
+jauh lebih mudah dipahami.
+
+LEVEL 6 — GITHUB ADVANCED
+
+Sekarang kita masuk bagian otomatisasi.
+
+Ini sangat relevan jika nantinya Anda ingin masuk ke area Data Engineer / Data Analyst yang bekerja dengan software/data pipeline.
+
+47. GitHub Actions
+
+GitHub Actions adalah sistem otomatisasi di GitHub.
+
+Contohnya:
+
+Setiap kali Anda melakukan:
+
+git push
+
+GitHub otomatis:
+
+jalankan Python
+      ↓
+jalankan test
+      ↓
+periksa kualitas kode
+      ↓
+kalau berhasil → PASS
+
+Misalnya:
+
+Push code
+   ↓
+GitHub Actions
+   ↓
+Python test
+   ↓
+Quality check
+   ↓
+PASS / FAIL
+48. CI/CD
+
+CI/CD adalah konsep otomatisasi dalam software development.
+
+CI
+
+Continuous Integration
+
+Setiap perubahan kode diperiksa secara otomatis.
+
+Misalnya:
+
+Developer
+   ↓
+git push
+   ↓
+Test
+   ↓
+Quality check
+CD
+
+Continuous Delivery/Deployment
+
+Setelah kode lolos pemeriksaan, kode dapat dipersiapkan atau dikirim ke environment tertentu secara otomatis.
+
+Gambaran:
+
+Developer
+    ↓
+   push
+    ↓
+   CI
+    ↓
+  testing
+    ↓
+   PASS
+    ↓
+   CD
+    ↓
+Deployment
+49. Secrets
+
+Kadang aplikasi membutuhkan informasi rahasia seperti:
+
+API key
+database password
+access token
+
+Jangan menulisnya langsung di kode:
+
+PASSWORD = "password123"
+
+atau meng-uploadnya ke GitHub.
+
+GitHub menyediakan Secrets untuk menyimpan nilai rahasia yang digunakan oleh workflow.
+
+Misalnya:
+
+GitHub Secret
+DATABASE_PASSWORD
+
+Kemudian workflow dapat menggunakannya tanpa menuliskan password langsung dalam file YAML.
+
+50. Environments
+
+Environment digunakan untuk memisahkan lingkungan aplikasi.
+
+Contoh:
+
+development
+testing
+production
+
+Misalnya:
+
+Development
+    ↓
+Testing
+    ↓
+Production
+
+Setiap environment dapat mempunyai:
+
+secrets berbeda
+variable berbeda
+aturan approval berbeda
+
+Contohnya database development:
+
+dev_database
+
+sedangkan production:
+
+production_database
+
+Ini mencegah kita sembarangan menggunakan konfigurasi production ketika sedang melakukan pengembangan.
+
+51. Workflow YAML
+
+Ini adalah bagian yang menggabungkan GitHub Actions.
+
+Workflow GitHub Actions biasanya disimpan di:
+
+.github/
+└── workflows/
+    └── test.yml
+
+Contoh sederhana:
+
+name: Python Test
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run test
+        run: |
+          python -m pytest
+
+Mari kita pecah.
+
+Bagian 1
+name: Python Test
+
+Nama workflow.
+
+Bagian 2
+on:
+  push:
+    branches: [main]
+
+Artinya:
+
+Jalankan workflow ketika ada push ke branch main.
+
+Bagian 3
+jobs:
+
+Menentukan pekerjaan yang akan dilakukan.
+
+Bagian 4
+runs-on: ubuntu-latest
+
+Menentukan komputer virtual yang digunakan untuk menjalankan pekerjaan.
+
+Bagian 5
+uses: actions/checkout@v4
+
+Mengambil repository ke komputer virtual tersebut.
+
+Bagian 6
+uses: actions/setup-python@v5
+
+Menyiapkan Python.
+
+Bagian 7
+run: |
+  pip install -r requirements.txt
+
+Menjalankan perintah:
+
+pip install
+Bagian 8
+run: |
+  python -m pytest
+
+Menjalankan testing.
+
+Jadi seluruh proses:
+
+git push
+   ↓
+GitHub
+   ↓
+GitHub Actions
+   ↓
+Checkout code
+   ↓
+Install Python
+   ↓
+Install dependency
+   ↓
+Run test
+   ↓
+PASS / FAIL
+Peta Besar Nomor 13–51
+
+Agar Anda tidak melihat 39 materi ini sebagai sesuatu yang sangat besar, sebenarnya semuanya dapat dikelompokkan seperti ini:
+
+LEVEL 1
+13. Membatalkan perubahan
+        ↓
+LEVEL 2
+14–21 GitHub dasar
+        ↓
+LEVEL 3
+22–29 Branching
+        ↓
+LEVEL 4
+30–37 Collaboration
+        ↓
+LEVEL 5
+38–46 Git Intermediate
+        ↓
+LEVEL 6
+47–51 GitHub Advanced
+
+Dan hubungan konsep utamanya adalah:
+
+                 GIT & GITHUB
+                      │
+          ┌───────────┴───────────┐
+          ↓                       ↓
+      Git lokal                GitHub
+          │                       │
+          ↓                       ↓
+       commit                  remote
+          │                       │
+          ↓                       ↓
+       branch  ───────────────→ push
+          │                       │
+          ↓                       ↓
+       merge                  pull request
+          │                       │
+          ↓                       ↓
+      rebase                  code review
+                                  │
+                                  ↓
+                           GitHub Actions
+                                  │
+                                  ↓
+                                CI/CD
+Urutan belajar yang saya sarankan untuk Anda
+
+Jangan langsung mencoba semua nomor 13–51 sekaligus. Untuk pemula, lebih efektif dibuat menjadi beberapa sesi:
+
+Sesi 1 — Nomor 13–21
+
+Fokus:
+
+restore
+repository
+remote
+push
+pull
+clone
+README
+public/private
+Sesi 2 — Nomor 22–29
+
+Fokus penuh pada:
+
+branch
+switch
+feature branch
+merge
+conflict
+Sesi 3 — Nomor 30–37
+fork
+pull request
+review
+issues
+labels
+milestones
+project board
+Sesi 4 — Nomor 38–46
+reset
+revert
+restore
+stash
+rebase
+interactive rebase
+cherry-pick
+tag
+HEAD
+Sesi 5 — Nomor 47–51
+GitHub Actions
+CI/CD
+Secrets
+Environments
+YAML
+
+Saran saya: jangan lanjut ke nomor 38 sebelum Anda benar-benar lancar dengan nomor 13–37. Khususnya reset, rebase, dan cherry-pick lebih mudah dipahami setelah konsep branch, merge, commit, dan HEAD sudah kuat.
+
+Files, images, and data analysis are unavailable until usage resets at 1:53 PM. Continue chatting with text only, or upgrade for more access.
+Try Plus free
